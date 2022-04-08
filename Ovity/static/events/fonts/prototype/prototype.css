@@ -1,0 +1,8 @@
+@font-face {
+	font-family: 'Prototype';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Prototype'), local('Prototype-Regular'),
+		url(prototype.woff) format('woff'),
+		url(prototype.ttf) format('truetype');
+}

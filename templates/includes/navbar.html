@@ -1,0 +1,164 @@
+{% load static %}	
+    <!-- Page Transitions
+	================================================== -->
+	<div class="pa-page-transition pa-page-transition-1 is-active"></div>
+	<div class="pa-overlay" style="position: fixed; top: 0; left: 0; z-index: 10002; width: 100vw; height: 100vh; pointer-events: none; background: #091019;"></div>
+
+	<!-- Navigation Menu
+	================================================== -->
+	<a class="pa-mobile-main-logo" href="{% url 'home'%}"><img alt="" src="{% static 'assets/images/logo-normal.png'%}"></a>
+
+	<nav id="main-nav" class="pa-menu navbar pa-navbar navbar-expand-lg navbar-dark bg-transparent static-top">
+
+		<!-- Desktop Menu Logo -->
+		<a class="navbar-brand" href="{% url 'home'%}"><img style="height: 100px; width: 100px; margin-left: 20px; padding-top: 10px; transform: scale(1.2);" alt="" src="{% static 'assets/images/logo-normal.png'%}"></a>
+
+		<!-- The Menu -->
+		<ul class="navbar-nav ml-auto">
+
+			<!-- Mobile Menu Logo (only use if "close" buttons are set to false in JS) -->
+			<li data-nav-custom-content class="custom-content pa-mobile-menu-logo"> 
+				<a class="pa-mobile-navbar-brand" href="{% url 'home'%}"><img alt="" src="{% static 'assets/images/logo-normal.png'%}"></a>
+			</li>
+
+			<!-- Regular Menu Items Start -->
+			<li class="nav-item menu-item-has-children">
+				<a class="nav-link hvr-underline-from-center" href="#">Waves</a>
+				<ul class="pa-submenu-ul">
+					<li class="nav-item"><a class="nav-link active" href="{% url 'home'%}">Home </a></li>
+					<li class="nav-item"><a class="nav-link active"  href="{% if '/' == request.path %}#about-us{% else %}{% url 'home'%}#about-us{% endif %}">About Waves </a></li>
+					<li class="nav-item"><a class="nav-link" href="http://impulseseee.epizy.com/">Waves Magazine </a></li>
+
+				</ul>
+			</li>
+
+			<li class="nav-item menu-item-has-children">
+				<a class="nav-link hvr-underline-from-center" href="#">Events </a> 
+				<ul class="pa-submenu-ul">
+					<li class="nav-item menu-item-has-children">
+						<a class="nav-link" href="#">Tech Events</a> 
+						<ul class="pa-sub-submenu-ul">
+							<li><a class="nav-link" href="{% url 'events_by_category' 'tech-events'%}">All Tech</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'tech-events' 'circuit-craze'%}">Circuit (<em>Craze</em>)</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'tech-events' 'circuit-debugging'%}">Circuit(<em>Debuging</em>)</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'tech-events' 'paper-presentation'%}">Paper Presentation</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'tech-events' 'techno-admad'%}">Techno Admad</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'tech-events' 'techtempore'%}">Techtempore</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'tech-events' 'the-lost-light'%}">The Lost Light</a></li>
+						</ul>
+					</li>
+					<li class="nav-item menu-item-has-children">
+						<a class="nav-link" href="#">Non Tech Events </a> 
+						<ul class="pa-sub-submenu-ul">
+							<li><a class="nav-link" href="{% url 'events_by_category' 'non-tech-events'%}">All Non-Tech </a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'non-tech-events' 'k-mania'%}">K (<em>'mania</em>)</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'non-tech-events' 'jolly-a-gymkhana'%}">Jolly'a'(<em>gymkanna</em>)</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'non-tech-events' 'ipl-auction'%}">Ipl auction</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'non-tech-events' 'cipher'%}">Cipher</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'non-tech-events' 'run-to-hunt'%}">Run to hunt</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'non-tech-events' 'lo-fo'%}">Lo_fo</a></li>
+							<li><a class="nav-link" href="{% url 'event_detail' 'non-tech-events' 'shipwreck'%}">Shipwreck</a></li>
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+
+
+			<li class="nav-item menu-item-has-children">
+				<a class="nav-link hvr-underline-from-center" href="#">Workshops</a> 
+				<ul class="pa-submenu-ul">
+					<li class="nav-item"><a class="nav-link" href="#">Workshop 1</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Workshop 2</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Workshop 3</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Workshop 3</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Workshop 3</a></li>
+				</ul>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link hvr-underline-from-center" href="{% if '/' == request.path %}#about-us{% else %}{% url 'home'%}#about-us{% endif %}">About Us </a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link hvr-underline-from-center" href="{% url 'sponsers'%}">Sponsers </a>
+			</li>
+
+			<li class="nav-item menu-item-has-children">
+				<a class="nav-link hvr-underline-from-center" href="#"><strong>The</strong> Team </a> 
+				<ul class="pa-submenu-ul">
+					<li class="nav-item menu-item-has-children">
+						<a class="nav-link" href="{% url 'team' 'seee-office-bearers'%}">SEEE office Bearers</a> 
+						
+					</li>
+					<li class="nav-item menu-item-has-children">
+						<a class="nav-link" href="{% url 'team' 'tech-team'%}">Tech Team </a> 
+						
+					</li>
+					<li class="nav-item menu-item-has-children">
+						<a class="nav-link" href="{% url 'team' 'non-tech-team'%}">Non Tech Team </a> 
+						
+					</li>
+					<li class="nav-item menu-item-has-children">
+						<a class="nav-link" href="{% url 'team' 'workshop-team'%}">Workshop Team</a> 
+						
+					</li>
+					<li class="nav-item menu-item-has-children">
+						<a class="nav-link" href="{% url 'team' 'accommodation-team'%}">Accomodation Team</a> 
+						
+					</li>
+					<li class="nav-item menu-item-has-children">
+						<a class="nav-link" href="{% url 'team' 'hospitality-team'%}">Hospitality Team</a> 
+						
+					</li>
+					<li class="nav-item menu-item-has-children">
+						<a class="nav-link" href="{% url 'team' 'logistics-team'%}">Logistics Team</a> 
+						
+					</li>
+				</ul>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link hvr-underline-from-center" href="{% if '/' == request.path %}#contact-us{% else %}{% url 'home'%}#contact-us{% endif %}">Contact Us</a>
+			</li>
+
+			<li class="nav-item">
+				<div class="d-flex justify-content-centre mb-3 mb-lg-0">
+					{% if user.id is None%}
+					<div class="widget-header">
+						<small style="color: rgba(255, 255, 255, 0.719);" class="title">Welcome guest!</small>
+						<div> 
+							<a href="{% url 'login'%}">Sign in</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'register'%}"> Register</a>
+						</div>
+					</div>
+					{% else %}
+					<div class="widget-header">
+						<small style="color: rgba(255, 255, 255, 0.63);" class="title ">Welcome {{user.first_name}}!</small>
+						<div> 
+							<a href="{% url 'dashboard' %}"> Dashboard</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'logout'%}"> Logout</a>
+						</div>
+					</div>
+					{% endif %}
+
+				</div> 
+
+			</li>
+
+
+			<!-- Mobile Menu Social Icons -->
+			<li data-nav-custom-content class="custom-content pa-menu-socials"> 
+				<div class="pa-social-section">
+					<h1 class="pa-h1-v3 pa-bright fadeInDelay03Duration10"><strong>Connect</strong> with us</h1>
+					<a class="pa-social-icons" href="https://www.facebook.com/SkilltechWebDesign" target="_blank"><span class="fadeInDelay03Duration10"><i class="fa fa-facebook"></i></span></a>
+					<a class="pa-social-icons" href="https://www.facebook.com/SkilltechWebDesign" target="_blank"><span class="fadeInDelay03Duration10"><i class="fa fa-behance"></i></span></a>
+					<a class="pa-social-icons" href="https://www.facebook.com/SkilltechWebDesign" target="_blank"><span class="fadeInDelay03Duration10"><i class="fa fa-dribbble"></i></span></a>
+					<a class="pa-social-icons" href="https://www.facebook.com/SkilltechWebDesign" target="_blank"><span class="fadeInDelay03Duration10"><i class="fa fa-instagram"></i></span></a>
+					<p class="pa-p-v1 pa-white pa-contact-lastline fadeInDelay03Duration10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				</div>
+			</li>
+
+		</ul>
+	</nav>
+	<!-- /.pa-menu -->

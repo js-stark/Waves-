@@ -1,0 +1,27 @@
+{% load static %}
+
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="{% static 'timer/js/countdown.js'%}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'timer/css/demo.css'%}">
+
+<body>
+
+    <div class="event-container">
+        <div class="event">
+
+            <div id="getting-started" class="event__countdown">
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+    $('#getting-started').countdown('2022/05/05', function(event) {
+        $(this).html(event.strftime(''
+        +'<div class="event__item"><p class="event__item--title">%D</p><p id="day__name">Days</p></div> <div class="event__item"><p class="event__item--title">%H</p><p id="hour__name">Hours</p></div> <div class="event__item"><p class="event__item--title">%M</p><p id="minute__name">Minutes</p></div> <div class="event__item"><p class="event__item--title">%S</p><p id="second__name">Seconds</p></div>'));
+    });
+    </script>
+    
+</body>
+

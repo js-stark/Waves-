@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load setvar %}
+
+{% block content %}
+
+<link href="{% static 'css/ui.css'%}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/responsive.css'%}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+<script src="{% static 'js/script.js'%}" type="text/javascript"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<section style="padding-top: 100px; background: #091019;" class="section-content padding-y bg">
+<div class="container">
+
+<!-- ============================ COMPONENT 1 ================================= -->
+
+<div class="row">
+	<aside class="col-lg-6">
+<div class="card text-dark">
+  <div class="card-body">
+    <h4 class="card-title mb-4 ">Registration Details</h4>
+    <form  action="{% url 'place_order' %}" method="POST">
+      {% csrf_token %}
+      <div class="form-row">
+        <div class="col form-group">
+          <label class="text-dark" for="">First Name</label>
+          <input name="first_name" class="form-control text-secondary" required>
+        </div>
+        <div class="col form-group">
+          <label class="text-dark"  for="">Last Name</label>
+          <input type="text" name="last_name" class="form-control text-secondary" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col form-group">
+          <label class="text-dark"  for="">Email</label>
+          <input type="email" name="email" class="form-control text-secondary" required>
+        </div>
+        <div class="col form-group">
+          <label class="text-dark"  for="">Phone Number</label>
+          <input type="text" name="phone" class="form-control text-secondary" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col form-group">
+          <label class="text-dark"  for="">Roll Number</label>
+          <input type="text" name="roll_number" class="form-control text-secondary" required>
+        </div>
+        <div class="col form-group">
+          <label class="text-dark"  for="">Date of birth</label>
+          <input type="date" name="date_of_birth" class="form-control text-secondary">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col form-group">
+          <label class="text-dark"  for="">college</label>
+          <input type="text" name="college" class="form-control text-secondary" required>
+        </div>
+        <div class="col form-group">
+          <label class="text-dark"  for="">Department</label>
+          <input type="text" name="department" class="form-control text-secondary" required>
+        </div>
+       
+        </div>
+      <div class="form-row">
+        <div class="col form-group">
+          <label class="text-dark"  for="">Year</label>
+          <input type="number" name="year" class="form-control text-secondary" required>
+        </div>
+        <div class="col form-group">
+          <label class="text-dark"  for="">Referral Code</label>
+          <input type="text" name="country" class="form-control text-secondary">
+        </div>
+        </div>
+        <div class="form-row">
+          <label class="text-dark"  for="">Note</label>
+          <textarea name="note" rows="2" class="form-control text-secondary"></textarea>
+        </div>
+
+  </div>
+</div> <!-- card.// -->
+
+	</aside> <!-- col.// -->
+	<aside class="col-lg-6">
+
+		<div class="card">
+		<div class="card-body">
+      <table class="table table-borderless table-shopping-cart">
+      <thead class="text-muted">
+      <tr class="small text-uppercase">
+        <th scope="col">Event</th>
+        <th scope="col" width="120">Category</th>
+        <th scope="col" width="120">Price</th>
+
+      </tr>
+      </thead>
+      <tbody>
+
+      {% for cart_item in cart_items %}
+      <tr>
+      	<td>
+      		<figure class="itemside align-items-center">
+      			<div class="aside"><img src="{{ cart_item.event.image.url }}" class="img-sm"></div>
+      			<figcaption class="info">
+      				<a href="{{ cart_item.event.get_url }}" class="title text-dark">{{ cart_item.event.event_name }}</a>
+
+      			</figcaption>
+      		</figure>
+      	</td>
+      	<td>
+      		<!-- col.// -->
+            <a href="{{ cart_item.event.get_url }}" class="text-muted">{{ cart_item.event.category }}</a>
+
+      	</td>
+      	<td>
+      		<div class="price-wrap">
+      			<var class="price">₹ {{ cart_item.sub_total }}</var>
+      			<small class="text-muted"> ₹ {{ cart_item.event.price }} each </small>
+      		</div> 
+      	</td>
+
+      </tr>
+      {% endfor %}
+
+      </tbody>
+      </table>
+
+      <dl class="dlist-align">
+        <dt>Total price:</dt>
+        <dd class="text-right">₹ {{total}}</dd>
+      </dl>
+      <dl class="dlist-align">
+        <dt>Tax:</dt>
+        <dd class="text-right"> ₹ {{tax}}</dd>
+      </dl>
+      <dl class="dlist-align">
+        <dt>Grand Total:</dt>
+        <dd class="text-right text-dark b"><strong>₹ {{grand_total}}</strong></dd>
+      </dl>
+      <hr>
+      <p class="text-center mb-3">
+        <img src="{% static './images/misc/payments.png' %}" height="26">
+      </p>
+                  <!-- <a href="{% url 'checkout'%}" class="btn btn-primary btn-block"> Make Payment </a> -->
+      <button type="button" name="button" class="payWithRazorpay btn btn-primary btn-block mt-2">Pay with Razorpay</button>
+
+      </form>
+		</div> <!-- card-body.// -->
+		</div> <!-- card.// -->
+
+
+</aside> <!-- col.// -->
+
+
+</div> <!-- row.// -->
+
+<!-- ============================ COMPONENT 1 END .// ================================= -->
+
+</div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+<!-- Scripts from razorpay -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+  $(document).ready(function(){
+
+  $('.payWithRazorpay').click(function(e){
+      e.preventDefault();
+      var first_name = $("[name='first_name']").val();
+      var last_name = $("[name='last_name']").val();
+      var email = $("[name='email']").val();
+      var phone = $("[name='phone']").val();
+      var roll_number = $("[name='roll_number']").val();
+      var date_of_birth = $("[name='date_of_birth']").val();
+      var college = $("[name='college']").val();
+      var Department = $("[name='department']").val();
+      var year = $("[name='year']").val();
+      var referral_code = $("[name='referral_code']").val();
+      var token = $("[name='csrfmiddlewaretoken']").val();
+
+      if(first_name == "" || last_name == "" || email =="" || phone == "" || roll_number == "" || date_of_birth == "" || college == "" || Department == "" || year == ""){
+          swal("Alert","Required fields are mandatory","error");
+          // alert('all fields are mandatory');
+          return false;
+      }
+      else{ 
+
+          $.ajax({
+              method:"GET",
+              url:"{% url 'proceed-to-pay'%}",
+              success: function (response){
+                console.log(response);
+                var options = {
+                "key": "rzp_test_HocVobzSGPm7aO", // Enter the Key ID generated from the Dashboard
+                "amount":response.total_price * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "Waves 2022",
+                "description": "Thankyou for Registering in WAVES",
+                "image": "{% static 'assets/images/logo-normal.png'%}",
+                // "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "handler": function (responseb){
+                    data = {
+                      "first_name" : first_name,
+                      "last_name" : last_name,
+                      "email":  email,
+                      "phone": phone,
+                      "roll_number":roll_number,
+                      "date_of_birth":date_of_birth,
+                      "college":college,
+                      "Department":Department,
+                      "year":year,
+                      "referral_code":referral_code,
+                      "payment_mode": "Paid by Razorpay",
+                      "payment_id" : responseb.razorpay_payment_id,
+                      "csrfmiddlewaretoken": token,
+                    }
+                    $.ajax({
+
+                      method : "POST",
+                      url: "{% url 'place_order'%}",
+                      data: data,
+                      success : function(responsec){
+
+                        payment_data = {
+                          'user' : responsec['user'],
+                          'amount_paid':responsec['amount_paid'],
+                          'payment_id' : responsec['payment_id'],
+                          'payment_method': responsec['payment_method'],
+                          'status' : responsec['status'],
+                          'user' : responsec['user'],
+                          'order_number' : responsec['order_number'],
+                          "csrfmiddlewaretoken": token,
+                        }
+                        console.log("Printing the payment data")
+                        console.log(payment_data)
+                        swal({
+                          title: 'Order Successful',
+                          text: 'Redirecting...',
+                          icon: 'success',
+                          timer: 2000,
+                          buttons: false,
+                      })
+                      .then(() => {
+                        console.log("sending payment data to backend")
+                          $.ajax({
+                            method :"POST",
+                            url:"{% url 'payments'%}",
+                            beforeSend: function() {
+                                swal({
+                                        title: 'Assiging your seat',
+                                        text: 'Please dont refresh your page...',
+                                    })
+                            },
+                            data : payment_data,
+                            success : function(responsed){
+                              console.log(
+                                responsed['order_number'],
+                                responsed['transID'],
+                              );
+                              var order_number = responsed['order_number']
+                              var transID = responsed['transID']
+
+                              var url = "{% url 'payment_confirmation' 'first' 'second' %}".replace('first',order_number).replace('second',transID)
+
+                              window.location.href = url
+                            }
+
+                          })
+                      })
+                      }
+                    })
+                },
+                "prefill": {
+                    "name": first_name + " " + last_name,
+                    "email": email,
+                    "contact": phone
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+
+            rzp1.open();
+                }
+          });
+      }
+  });
+  });
+</script>
+
+
+{% endblock %}

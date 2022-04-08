@@ -1,0 +1,23 @@
+.mobile-block {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  /* tablet devices */
+}
+@media (max-width: 992px) {
+  /* small tablet devices */
+  .slider-main .item-slide {
+    height: auto;
+  }
+
+  .table-shopping-cart tr td:first-child {
+    width: 250px;
+  }
+  .table-shopping-cart .itemside .info {
+    padding: 0;
+  }
+  .table-shopping-cart .itemside .aside {
+    display: none;
+  }
+}

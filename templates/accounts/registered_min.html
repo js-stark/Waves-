@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="{% static 'assets/accordian/css/styles.css'%}">
+    <body>
+
+            {% csrf_token %}
+            <section class="accordion container popup-screen active" style="background-color: #101C26;">
+                <div class="accordion__container popup-box">
+
+                    <h1 class="tp-body-heading"> <strong>{{category}}</strong></h1>
+
+                    {% for event in events %}
+                   
+                    <div class="accordion__item">
+                        <header class="accordion__header">
+                            <i class='bx bx-plus accordion__icon'></i>
+                            <h3 class="accordion__title">{{event.event_name}} </h3>
+                        </header>
+        
+                        <div class="accordion__content">
+                            <p class="accordion__description">
+                            {{event.description}}
+                            </p>
+
+                            {% if event in registered %}
+                             <a href="{{event.get_url}}" > <button style="margin-left: 20px; margin-bottom: 20px; transform: scale(0.8);" type="button" class="btn btn-success"> <span class="text">Registered</span> <i style="font-size: 25px; transform: translateY(5px);" class='bx bxs-chevrons-right'></i> </button> </a>
+                            {% else %}
+                             <a href="{{event.get_url}}" > <button style="margin-left: 20px; margin-bottom: 20px; transform: scale(0.8);" type="button" class="btn btn-primary"> <span class="text">Register</span> <i style="font-size: 25px; transform: translateY(5px);" class='bx bxs-chevrons-right'></i> </button> </a>
+                            {% endif %}
+
+                        </div>
+
+                       
+                       
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+                
+            </section>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="{% static 'assets/accordian/js/main.js'%}"></script>
+    </body>
+
+    {% endblock %}

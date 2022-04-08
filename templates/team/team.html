@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="{% static 'team/css/team.css'%}">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'team/css/main.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'team/css/responsive.css'%}">
+
+    <script type="module" src="{% static 'team/javascript/vendor/auora.js'%}"></script>
+    <script src="{% static 'team/javascript/main.js'%}"></script>
+
+<body>
+    <div class="team" style="padding-top: 120px;">
+        <div class="o-line"></div>
+        <div class="o-line"></div>
+        <div class="o-line"></div>
+        <div class="scene"></div>
+        <h1>{{team}}</h1>
+        <div class="content">
+            {% for team_member in team_members %}
+            <div class="card1">
+                <div class="box1">
+                    <img src="{{team_member.photo.url}}" alt="">
+                    <div class="info">
+                        <div class="name">{{team_member.name}}</div>
+                        <div class="details">{{team_member.designation}}</div>
+                        <div class="social-links">
+                            <a href="{{team_member.social_link_1}}" target="_blank"><i class="fa fa-facebook-f"></i></a>
+                            <a href="{{team_member.social_link_2}}" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="{{team_member.social_link_3}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    
+</body>
+
+{% endblock %}

@@ -1,0 +1,250 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+<style>
+	@media (max-width:2000px) {
+		.event-image{
+			height: 300px;
+		}
+	} 
+	@media (max-width: 1400px) {
+		.event-image{
+			height: 250px;
+		}
+	}
+	@media (max-width: 1350px) {
+		.event-image{
+			height: 240px;
+		}
+	}
+	@media (max-width: 1300px) {
+		.event-image{
+			height: 230px;
+		}
+	}
+	@media (max-width: 1250px) {
+		.event-image{
+			height: 220px;
+		}
+	}
+	@media (max-width: 1150px) {
+		.event-image{
+			height: 210px;
+		}
+	}
+	@media (max-width: 1100px) {
+		.event-image{
+			height: 200px;
+		}
+	}
+	@media (max-width: 1000px) {
+		.event-image{
+			height: 150px;
+		}
+	}
+	@media (max-width: 790px) {
+		.event-image{
+			height: 120px;
+		}
+	}
+	@media (max-width: 576px) {
+		.event-image{
+			height: auto;
+		}
+	}
+</style>
+<link rel="stylesheet" href="{% static 'assets/css/theme-preview-page.css'%}">
+<script src="assets/js/theme-preview-page.js"></script>
+<body class="pa-theme-preview">
+
+	<!-- Navigation Menu
+	================================================== -->
+	<a class="pa-mobile-main-logo" href="#"><img alt="" src="assets/images/logo-normal.png"></a>
+
+	<!-- Demo Selection Thumbnails
+	================================================== -->
+	<section id="the-content" class="tp-demo-select">
+
+		<div class="container pa-ultracontainer text-center">
+
+			<!-- Homepage Demo Selection -->
+			<div class="row">
+				<div class="col">
+					<div class="tp-spacer-l"></div>
+					<h2 class="tp-body-heading fadeInDelay03Duration10"><strong>{{event_count}} PLUS +</strong></strong> {{categories}}</h2>
+				</div>
+			</div>
+
+			<div class="tp-spacer-m"></div>
+
+			<div class="pa-home-all-thumbs-flex-wrapper">
+
+				{% for event in events %}
+
+				<div class="tp-home-single-thumb-flex-wrapper fadeInUpDelay03Duration10">
+					<div class="tp-thumb-img-holder">
+						<a href="{{event.get_url}}" class="tp-image-link" target="_blank">
+							<img class="event-image" alt="" src="{{event.image.url}}">
+						</a>
+					</div>
+					<div class="tp-caption"><strong>{{event.event_name}}</strong></div>
+				</div>
+
+				{% endfor %}
+
+			</div>
+
+			
+	
+
+		</div>
+
+		<!-- <div class="tp-spacer-xl"></div>
+			<div class="pa-show-more-row text-center">
+				<div class="col">
+					<a href="#tp-gif" class="pa-show-more-arrow fadeInDelay15Duration10 wow fadeIn">
+						<span><i class="fa fa-angle-down bounceDelay35Duration12 wow bounce"></i></span>
+					</a>
+				</div>
+			</div> -->
+
+
+	</section>
+	<!-- /.tp-demo-select -->
+
+
+	<!-- GIFs Section
+	================================================== -->
+	<section class="tp-gifs-section" id="tp-gif">
+
+		<div class="tp-spacer-m"></div>
+
+		<div class="container pa-megacontainer">
+
+			<div class="row text-center">
+				<div class="col">
+					<h2 class="tp-body-heading fadeInDelay03Duration10">And You Get it <strong>All</strong> with <strong>Dark Mode</strong> and <strong>Feed Style Switcher</strong></h2>
+					<h4 class="tp-hero-subheading fadeInUpDelay06Duration10">With Dark Mode, you let your users change dark/light mode instantly and with Feed Style Switcher they set the blog layout they like best with ONE-CLICK!</h4>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="tp-spacer-m"></div>
+
+
+		<!-- GIF Section (zag) - Dark Mode
+		================================================== -->
+		<section class="tp-zigzag-section-1">
+
+			<div class="container pa-megacontainer">
+				<div class="row align-items-center">
+					<div class="col-12 col-lg-6 text-center tp-zigzag">
+						<img alt="" src="{% static 'events/images/dark-mode-switching.gif'%}">
+					</div>
+					<div class="col-12 col-lg-6 text-center text-lg-left tp-zigzag">
+						<img alt="" src="{% static 'events/images/dark-mode-button-presentation.png'%}" class="mb-3" style="max-width: 210px;">
+						<h3 class="tp-body-heading tp-body-heading-sm">Instant <strong>Dark Mode</strong> !</h3>
+						<p class="pa-p-v1 pa-bright">Let your users instantly switch Blog to dark/light mode when they want. It's an awesome UX and a must for websites in the future. The new theme comes with a beautiful custom designed Dark Mode button.</p>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+		<!-- /.tp-zigzag-section-1 -->
+
+
+		<!-- GIF Section (zag) - Blog Feed Styler
+		================================================== -->
+		<section class="tp-zigzag-section-2">
+			<div class="container pa-megacontainer">
+				<div class="row align-items-center">
+					<div class="col-12 col-lg-6 order-lg-2 text-center tp-zigzag tp-zagfix-1">
+						<img alt="" src="{% static 'events/images/feed-style-switching.gif'%}">
+					</div>
+					<div class="col-12 col-lg-6 text-center text-lg-right tp-zigzag">
+						<div class="container pa-supercontainer pa-feed-styler-container">
+							<div class="row">
+								<div class="col text-right p-0">
+									<div class="pa-feed-styler text-center text-lg-right">
+										<span class="pa-feed-styler pa-fs-magazine"><i class="fa fa-th"></i></span>
+										<span class="pa-feed-styler pa-fs-stretched "><i class="fa fa-align-justify"></i></span>
+										<span class="pa-feed-styler pa-fs-classic "><i class="fa fa-square"></i></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<h3 class="tp-body-heading tp-body-heading-sm">Blog Feed <strong>Style Switching</strong> !</h3>
+						<p class="pa-p-v1 pa-bright">You can let your users switch blog feed styles on the live website! With ONE-click. Blog Feed Styler lets you instantly change the feed style with a cool and fast transition animation</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /.tp-zigzag-section-2 -->
+
+
+		<!-- Section - Forms
+		================================================== -->
+		<section class="tp-zigzag-section-1 forms-present position-relative">
+
+			<div class="city-mix-lumin pa-absolute-fill image-back"></div>
+			<div class="container pa-megacontainer">
+				<div class="row align-items-center">
+					<div class="col-12 col-lg-3 text-center tp-zigzag form-zag">
+						<img alt="" src="{% static 'events/images/Forms-Section.png'%}">
+					</div>
+					<div class="col-12 col-lg-9 text-center text-lg-left tp-zigzag form-text-zag">
+						<h2 class="tp-body-heading">Fully <strong>Working Forms</strong> +$15 Value!</h2>
+						<h4 class="tp-hero-subheading">Finally! Particle 2 comes with fully working premium forms solution that's both easy to set up and has powerul options. Meet Simple Forms! Built on a robust and secure PHPMailer, with support for Google Recaptcha V3, V2 and math captcha, you'll have your forms secure and up and running in no time.</h4>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+		<!-- /.forms-present -->
+
+
+	</section>
+	<!-- /.tp-gifs-section -->
+
+
+	<!-- Section - Multi-level-menus
+	================================================== -->
+	<section class="tp-zigzag-section-2 menus-present" data-parallax="scroll" data-speed="0.2" data-image-src="{% static 'assets-theme-preview-page-only/images/menus-present-background.jpg'%}">
+		<div class="container pa-megacontainer">
+			<div class="row align-items-center">
+				<div class="col-12 col-lg-4 text-center tp-zigzag form-zag order-lg-2">
+					<img alt="" src="{% static 'events/images/menus-present.png'%}">
+				</div>
+				<div class="col-12 col-lg-8 text-center text-lg-right tp-zigzag form-text-zag">
+					<h2 class="tp-body-heading"><strong>Multi-Level</strong> Menus</h2>
+					<h4 class="tp-hero-subheading">Menus are now 3-Levels Deep. Both desktop and mobile menus have a new dedicated design. Desktop Menu builds on Particle's clean and modern style and mobile menu has the fly-out style with each sub-level covered! Aesthetically beautiful and super intuitive to for use.</h4>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.pa-cta-v2 -->
+
+
+	<!-- Second CTA Section
+	================================================== -->
+	<section class="pa-cta-v2 pa-centered-section pa-image-back" style="background-image: url(/static/assets/images/low-poly.jpg);">
+		<div class="pa-absolute-fill pa-gradient-back-v1"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-xl-10 offset-xl-1 text-center">
+					<h1 class="pa-h1-v2 pa-bright fadeInDelay00Duration10">Like what You see? <strong>Get Particle</strong> Now!</h1>
+					<p class="pa-p-v1 pa-white fadeInDelay03Duration10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+					<a class="pa-button-secondary pa-hvr-sweep-to-right fadeInDelay03Duration10" href="https://themeforest.net/item/particle-modern-tech-startup-html-template/20078383?ref=Skilltech" target="_blank">Get it Now</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.pa-cta-v2 -->
+
+
+
+</body>
+
+{% endblock %}

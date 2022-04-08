@@ -1,0 +1,80 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'gallery/css/style.css'%}">
+<body>
+    <section class="portfolio" id="Portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h1>Sponsers Waves 2022</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="filter-buttons">
+                    <ul id="filter-btns">
+                        <li class="active" data-target="all">ALL</li>
+                        <li data-target="title_Sponser">Title Sponser</li>
+                        <li data-target="media_sponser">Media Sponsers</li>
+                        <li data-target="technology_sponser">Technology Sponsers</li>
+                        <li data-target="radio_sponser">Radio Sponsers</li>
+                        <li data-target="refreshment_sponser">Refreshment Sponsers</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="portfolio-gallery">
+  
+                    <div class="item" data-id="title_Sponser">
+                        <div class="inner">
+                            <img src="{% static 'gallery/sponsers/sponser.jpg'%}" alt="portfolio">
+                           
+                        </div>
+                    </div>
+  
+                    <div class="item" data-id="media_sponser">
+                        <div class="inner">
+                          <img src="{% static 'gallery/sponsers/sponser.jpg'%}" alt="portfolio">
+                             
+                        </div>
+                    </div>
+  
+                    <div class="item" data-id="technology_sponser">
+                        <div class="inner">
+                          <img src="{% static 'gallery/sponsers/sponser.jpg'%}" alt="portfolio">
+                             
+                        </div>
+                    </div>
+  
+                    <div class="item" data-id="technology_sponser">
+                        <div class="inner">
+                            <img src="{% static 'gallery/sponsers/sponser.jpg'%}" alt="portfolio">
+                            
+                        </div>
+                    </div>
+  
+                    <div class="item" data-id="radio_sponser">
+                        <div class="inner">
+                            <img src="{% static 'gallery/sponsers/sponser.jpg'%}" alt="portfolio">
+                             
+                        </div>
+                    </div>
+  
+                    <div class="item" data-id="refreshment_sponser">
+                        <div class="inner">
+                            <img src="{% static 'gallery/sponsers/sponser.jpg'%}" alt="portfolio">
+                            
+                        </div>
+                    </div>
+  
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'gallery/js/main.js'%}"></script>
+     
+</body>
+
+{% endblock %}

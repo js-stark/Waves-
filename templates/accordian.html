@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="{% static 'assets/accordian/css/styles.css'%}">
+    <body style="background: url('{{single_event.image.url}}'); background-repeat: no-repeat; background-size: cover;">
+        <section class="accordion container popup-screen active">
+            <div class="accordion__container popup-box">
+                <a href="{% url 'events_by_category' %}"><i class='bx bx-x close-btn'></i></a>
+                <div class="accordion__item">
+                    <header class="accordion__header">
+                        <i class='bx bx-plus accordion__icon'></i>
+                        <h3 class="accordion__title">What is {{single_event.event_name}} ? </h3>
+                    </header>
+    
+                    <div class="accordion__content">
+                        <p class="accordion__description">
+                           {{single_event.description}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <header class="accordion__header">
+                        <i class='bx bx-plus accordion__icon'></i>
+                        <h3 class="accordion__title">What are the <b>Rounds</b> in {{single_event.event_name}}? </h3>
+                    </header>
+    
+                    <div class="accordion__content">
+                        <p class="accordion__description">
+                           {{single_event.rounds}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <header class="accordion__header">
+                        <i class='bx bx-plus accordion__icon'></i>
+                        <h3 class="accordion__title">What are the <b>Rules</b> in {{single_event.event_name}} ?</h3>
+                    </header>
+    
+                    <div class="accordion__content">
+                        <p class="accordion__description">
+                            {{single_event.rules}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion__item">
+                    <header class="accordion__header">
+                        <i class='bx bx-plus accordion__icon'></i>
+                        <h3 class="accordion__title">Contact </h3>
+                    </header>
+    
+                    <div class="accordion__content">
+                        <p class="accordion__description">
+                           {{single_event.contact}}
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <header class="accordion__header">
+                        <i class='bx bx-plus accordion__icon'></i>
+                        <h3 class="accordion__title">Date and Fees </h3>
+                    </header>
+    
+                    <div class="accordion__content">
+                        <p class="accordion__description">
+                           {{single_event.date}}
+                           {{single_event.price}}
+                        </p>
+                    </div>
+                </div>
+
+                <a href="#" class="btn">Register</a>
+            </div>
+
+            
+        </section>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="{% static 'assets/accordian/js/main.js'%}"></script>
+    </body>
+
+    {% endblock %}

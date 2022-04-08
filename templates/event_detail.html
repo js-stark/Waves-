@@ -1,0 +1,98 @@
+
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="{% static 'assets/accordian/css/styles.css'%}">
+    <body style="background: url('{{single_event.image.url}}'); background-repeat: no-repeat; background-size: cover;">
+
+
+        <form action="{% url 'add_event' single_event.id %}" method="post">
+            {% csrf_token %}
+            <section class="accordion container popup-screen active">
+                <div class="accordion__container popup-box">
+                    <a href="{% url 'events_by_category' single_event.category.slug %}"><i class="bx bx-x close-button"></i></a>
+                    <div class="accordion__item">
+                        <header class="accordion__header">
+                            <i class='bx bx-plus accordion__icon'></i>
+                            <h3 class="accordion__title">What is {{single_event.event_name}} ? </h3>
+                        </header>
+        
+                        <div class="accordion__content">
+                            <p class="accordion__description">
+                            {{single_event.description|safe|escape }}
+                            </p>
+                            <a href="{{single_event.poster.url}}" > <button style="margin-left: 20px; margin-bottom: 20px; transform: scale(0.8);" type="button" class="btn btn-success"> <span class="text">View Poster</span> <i style="font-size: 25px; transform: translateY(5px);" class='bx bxs-chevrons-right'></i> </button> </a>
+
+
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <header class="accordion__header">
+                            <i class='bx bx-plus accordion__icon'></i>
+                            <h3 class="accordion__title">What are the <b>Rounds</b> in {{single_event.event_name}}? </h3>
+                        </header>
+        
+                        <div class="accordion__content">
+                            <p class="accordion__description">
+                            {{single_event.rounds|safe|escape}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <header class="accordion__header">
+                            <i class='bx bx-plus accordion__icon'></i>
+                            <h3 class="accordion__title">What are the <b>Rules</b> in {{single_event.event_name}} ?</h3>
+                        </header>
+        
+                        <div class="accordion__content">
+                            <p class="accordion__description">
+                                {{single_event.rules|safe|escape}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <header class="accordion__header">
+                            <i class='bx bx-plus accordion__icon'></i>
+                            <h3 class="accordion__title">Contact </h3>
+                        </header>
+        
+                        <div class="accordion__content">
+                            <p class="accordion__description">
+                            {{single_event.contact|safe|escape}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion__item">
+                        <header class="accordion__header">
+                            <i class='bx bx-plus accordion__icon'></i>
+                            <h3 class="accordion__title">Date and Fees </h3>
+                        </header>
+        
+                        <div class="accordion__content">
+                            <p class="accordion__description">
+                             Date : {{single_event.date|safe|escape}} <br>
+                            Fee: ₹ {{single_event.price|safe|escape}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn  btn-primary"> <span class="text">Register</span> <i style="font-size: 25px; transform: translateY(5px);" class='bx bxs-chevrons-right'></i>  </button>
+                </div>
+
+                
+            </section>
+        </form>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="{% static 'assets/accordian/js/main.js'%}"></script>
+    </body>
+
+    {% endblock %}

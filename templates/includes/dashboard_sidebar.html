@@ -1,0 +1,14 @@
+<aside class="col-md-3">
+  <!--   SIDEBAR   -->
+  <ul class="list-group">
+    <a class="list-group-item {% if '/accounts/' == request.path %}active{% endif %}" href="{% url 'dashboard' %}"> Dashboard </a>
+    <a class="list-group-item {% if '/my_registrations' in request.path %}active{% endif %}" href="{% url 'my_registrations'%}"> My Registrations </a>
+    <a class="list-group-item {% if '/tech-events' in request.path %}active{% endif %}" href="{% url 'registered_min' 'tech-events'%}"> Tech Events </a>
+    <a class="list-group-item {% if '/non-tech-events' in request.path %}active{% endif %}" href="{% url 'registered_min' 'non-tech-events'%}"> Non-Tech Events </a>
+    <a class="list-group-item {% if '/workshops' in request.path %}active{% endif %}" href="{% url 'registered_min' 'workshops'%}"> Workshops </a>
+    <a class="list-group-item {% if '/student_ambassador_program/' in request.path %}active{% endif %}" href=""> Student Ambassador Program </a>
+  </ul>
+  <br>
+  <a class="btn btn-light btn-block" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a>
+  <!--   SIDEBAR .//END   -->
+</aside>
